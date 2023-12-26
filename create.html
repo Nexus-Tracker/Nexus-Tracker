@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -12,11 +12,10 @@
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="trac.css">
-    <link rel="stylesheet" href="admin.css">
-
+    <link rel="stylesheet" href="create.css">
     <link rel='dns-prefetch' href='//fonts.googleapis.com'>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <title>Secure Nexus Express</title>
+    <title>Create Page</title>
     <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script> -->
   
     <style type="text/css">
@@ -104,7 +103,7 @@
         </div>
             <!-- Top Menu -->
         <nav class="top__menu" role="navigation" aria-label="Top Menu">
-          <ul id="menu-top-menu" class="top-navigation  js-dropdown" role="menubar"><li id="menu-item-609" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-609"><a href="index.html">Home</a></li>
+          <ul id="menu-top-menu" class="top-navigation  js-dropdown" role="menubar"><li id="menu-item-609" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-609"><a href="about.html">About Us</a></li>
     <li id="menu-item-608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-608"><a href="tracking.html">Tracking</a></li>
     <li id="menu-item-610" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-610"><a href="contact.html">Contact Us</a></li>
     <li id="menu-item-610" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-610"><div id="google_translate_element"  class="hideGoogle" style="text-align: center;"></div></li>
@@ -112,35 +111,126 @@
     </nav>
     </div>
     </div>
+    <a href="admin.html" class="backbtn">Back</a>
+  <h1 class="uh1">Shipment Information</h1>
 
-    <div>
-    <a href="create.html" class="create-atag">Add Shipment</a>
-    </div>
-    <h1>Shipment Information</h1>
-    <table>
-      <thead>
-        <tr>
-          <td>${shipment.package-id}</td>
-          <td>${shipment.tracking-no}</td>
-          <td>${shipment.description}</td>
-          <td>${shipment.status}</td>
+  <form id="shipment" class="shipment-info" method="post" action="./server/createpackage.php">
+  <span>Package Id</span>
+  <input id="" type="number" name="package-id" placeholder="Package id">
+  <span>Tracking Number</span>
+  <input id="" type="number"  name="tracking-no" placeholder="Tracking Number">
+  <span>Description</span>
+  <input id="" type="test"  name="description" placeholder="Description">
+    <h1>Sender's Information</h1>
+  <span>Sender's Name</span>
+  <input id="" type="test" name="sender-name" placeholder="Sender's Name">
+  <span>Sender's Address</span>
+  <input id="" type="test" name="sender-address" placeholder="Sender's Address">
+  <span>Sender's Phone</span>
+  <input id="" type="tel"  name="sender-phone" placeholder="Sender's Phone">
+  <span>Sender's Email</span>
+  <input id="" type="email" name="sender-email" placeholder="Sender's Email">
+  <h1>Receiver's Information</h1>
+  <span>Receiver's Name</span>
+  <input id="" type="test"  name="receiver-name" placeholder="Receiver's Name">
+  <span>Receiver's Address</span>
+  <input id="" type="test" name="receiver-address" placeholder="Receiver's Address">
+  <span>Receiver's Phone</span>
+  <input id="" type="tel" name="receiver-phone" placeholder="Receiver's Phone">
+  <span>Receiver's Email</span>
+  <input id="" type="email" name="receiver-email" placeholder="Receiver's Email">
+
+  <h1>Other Information</h1>
+  <span>Sending Location</span>
+  <input id="" type="test" name="sending-location" placeholder="Sending Location">
+  <span>Price</span>
+  <input id="" type="number" name="price" placeholder="Price">
+  <span>Status</span>
+  <input id="" type="test" name="status" placeholder="Status">
+
+<button id="createBtn" type="submit">Create</button>
+
+
+
+
+
+  </form>
+  <div id="displayMessage"></div>
+  <footer class="footer" role="contentinfo">
+    <div class="footer-top">
+    <div class="container">
+    <div class="row">
+    <div class="col-xs-12  col-md-4"><div class="widget  widget_black_studio_tinymce"><div class="textwidget"><p><img class=" size-full wp-image-22 alignnone" src="images/logo_footer.png" alt="logo-footer" width="217" height="50"></p>
+    <p>Security, convenience, and access – these are the words that define Nexus Express        Storage and that drive our growth and success. Thanks to our commitment and dedication to customer satisfaction, Nexus Express        has become a leader in self-storage. Our customers-first attitude has allowed us to expand to 53 locations.</p>
+    <p><a class="icon-container  icon-container--square" href="https://www.facebook.com/" target="_blank"><span class="fa fa-facebook"></span></a>&nbsp;<a class="icon-container  icon-container--square" href="https://twitter.com/" target="_blank"><span class="fa fa-twitter"></span></a> <a class="icon-container  icon-container--square" href="http://themeforest.net/user/" target="_blank"><span class="fa fa-wordpress"></span></a>&nbsp;<a class="icon-container  icon-container--square" href="https://www.youtube.com/user/" target="_blank"><span class="fa fa-youtube-play"></span></a></p>
+    </div></div></div>
     
-        </tr>
-      </thead>
-  <tbody id="table-container">
-    <tr>
-      <td>${shipment.package-id}</td>
-      <td>${shipment.tracking-no}</td>
-      <td>${shipment.description}</td>
-      <td>${shipment.status}</td>
-      <td><a href="view.html">View Details</a></td>
-      <td><a href="edit.html">Edit</a></td>
-      <td><button id="deleteBtn">delete</button></td>
-
-    </tr>
-  </tbody>
-    </table>
-      <scripts src="admin.js"></scripts>
-  
+    
+    
+    
+    
+    
+    <div class="col-xs-12  col-md-2">
+    <div class="widget  widget_nav_menu">
+    <h6 class="footer-top__headings">NAVIGATION</h6>
+    <div class="menu-top-menu-container">
+    
+    <ul id="menu-top-menu-1" class="menu">
+    <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-467">
+    <a href="tracking.html">Track Shipment</a>
+    
+    </li>
+    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24"><a href="contact.html">Contact Us</a></li>
+    
+    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25"><a rel="noopener" href="about.html">About Us</a></li>
+    
+    
+    </ul></div></div></div>
+    
+    
+    
+    
+    <div class="col-xs-12  col-md-2">
+    <div class="widget  widget_nav_menu">
+    
+    <h6 class="footer-top__headings">OUR SERVICES</h6>
+    
+    <div class="menu-services-menu-container">
+    <ul id="menu-services-menu" class="menu">
+    <li id="menu-item-111" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-111">
+    <a href="">All Services</a></li>
+    
+    <li id="menu-item-112" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-112"><a href="">Ground Transport</a></li>
+    
+    <li id="menu-item-113" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-113"><a href="">Cargo</a></li>
+    
+    <li id="menu-item-114" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-114"><a href="">Warehousing</a></li>
+    
+    <li id="menu-item-115" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-115"><a href="">Logistic Service</a></li>
+    
+    <li id="menu-item-116" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-116"><a href="">Trucking Service</a></li>
+    
+    <li id="menu-item-117" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-117"><a href="">Storage</a></li>
+    
+    </ul></div></div></div><div class="col-xs-12  col-md-4">
+    
+    <div class="widget  widget_black_studio_tinymce"><h6 class="footer-top__headings"> Secure Nexus Express       </h6>
+    <div class="textwidget"><p>With new advances in technology, our company continues to grow and adapt to provide you with the best service – and consequently, the best experience – possible. Stop by one of our many locations to see first hand what Nexus Express        Storage can offer. If you’re interested in portable storage, email us.</p>
+    <p><a class="btn    btn-primary" href="tracking.html">TRACKING</a></p>
+    </div></div></div> </div>
+    </div>
+    </div>
+    <div class="footer-bottom">
+    <div class="container">
+    <div class="footer-bottom__left">
+    <a href="#"> Secure Nexus Express       </a> A delivery service you can depend on. </div>
+    <div class="footer-bottom__right">
+    Copyright © 2009–2023 Secure Nexus Express       . All rights reserved. </div>
+    </div>
+    </div>
+    </footer>
+    
+    </div><!-- end of .boxed-container -->
+    
 </body>
 </html>
