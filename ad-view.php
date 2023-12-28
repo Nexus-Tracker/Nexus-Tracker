@@ -146,10 +146,19 @@
   <h1>Other Information</h1>
   <span>Sending Location</span>
   <input id="" type="test" placeholder="Sending Location" readonly>
+  <span>Delivery Location</span>
+  <input id="" type="test" placeholder="Delivery Location" readonly>
+  <span>Service Price</span>
+  <input id="" type="test" type="number" placeholder="Service Price" readonly>
+  <span>Delivery Type</span>
+  <select disabled id="selectPickup">
+  <option value="0">Office Pickup </option>
+  <option value="1">Home Delivery</option>
+    </select>
   <span>Price</span>
   <input id="" type="number" placeholder="Price" readonly>
   <span>Status</span>
-<select >
+<select id="statusSelect" disabled>
   <option value="0">Package Received </option>
   <option value="1">Package Dispatched</option>
   <option value="2">Package Ontransit</option>
@@ -158,7 +167,7 @@
   <option value="5">Package Complete</option>
 
 </select>
-<button id="editBtn">Edit</button>
+<button id="editBtn" type="button">Edit</button>
     <button style="display: none;" id="saveBtn" type="submit">Save</button>
 
   </form>

@@ -4,6 +4,8 @@ const packageId = urlParams.get('packageId');
 const editBtn = document.getElementById("editBtn");
 const saveBtn = document.getElementById("saveBtn");
 const inputs = document.querySelectorAll('input');
+const selectPickup = document.getElementById('selectPickup')
+const statusSelect = document.getElementById('statusSelect');
 const arrayinputs = Array.from(inputs)
 
 editBtn.addEventListener('click',()=>{
@@ -16,6 +18,9 @@ editBtn.addEventListener('click',()=>{
 
 
   });
+  selectPickup.removeAttribute('disabled');
+
+ statusSelect.removeAttribute('disabled');
   saveBtn.style.display = 'inline-block';
 
   editBtn.style.display = 'none';
@@ -27,7 +32,9 @@ event.preventDefault()
 arrayinputs.forEach(input =>{
 input.setAttribute('readonly','readonly')
 })
+selectPickup.setAttribute('disabled',true);
 
+statusSelect.setAttribute('disabled',true);
 saveBtn.style.display = 'none';
 editBtn.style.display = 'inline-block'
 })
