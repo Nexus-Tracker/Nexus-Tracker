@@ -1,6 +1,6 @@
 <?php
 include('../config/autoload.php');
-
+// session_start();
 // required headers
 header("Access-Control-Allow-Origin:" . $ORIGIN);
 header("Content-Type:" . $CONTENT_TYPE);
@@ -22,18 +22,26 @@ $package_id = $_GET['package_id'] ?? null;
 $tracking_no = $_GET['tracking_no'] ?? null;
 
 
-if ((empty($package_id) || $package_id == null || !is_numeric($package_id) || $package_id=='' || $package_id==' ') && (empty($tracking_no) || $tracking_no == null || $tracking_no=='' || $tracking_no==' ')) {
+if ((empty($package_id) || $package_id == null || !is_numeric($package_id) || $package_id == '' || $package_id == ' ') && (empty($tracking_no) || $tracking_no == null || $tracking_no == '' || $tracking_no == ' ')) {
     // No valid package id provided
 
     // set response code - 404 Not found
-    http_response_code(404);
+    // http_response_code(404);
 
-    // tell the package no products found
-    echo json_encode(
-        array("message" => "Plaese provide a valid Package ID or Tracking number")
-    );
+    // // tell the package no products found
+    // echo json_encode(
+    //     array("message" => "Plaese provide a valid Package ID or Tracking number")
+    // );
 
-    return;
+    // return;
+
+    // $_SESSION['message'] = "Plaese provide a valid Package ID or Tracking number";
+
+    // include('../../trackresult.php')
+
+    $error = urlencode('Plaese provide a valid Package ID or Tracking number');
+    header('Location: ../../tracking.php' . $error);
+    return false;
 }
 
 // query packages
@@ -48,17 +56,19 @@ $stmt = $package->getPackage();
 // $num = $stmt->rowCount();
 
 // check if more than 0 record found
-if (is_string($stmt)){
+if (is_string($stmt)) {
     // set response code - 200 OK
-    http_response_code(400);
+    // http_response_code(400);
 
-    // show packages data in json format
-    echo json_encode(array("message" => $stmt));
+    // // show packages data in json format
+    // echo json_encode(array("message" => $stmt));
 
-    return;
+    // return;
+    $error = urlencode($stmt);
+    header('Location: ../../tracking.php?error=' . $error);
+    return false;
 
-}
-elseif($stmt) {
+} elseif ($stmt) {
 
     // packages array
     $packages_arr = array();
@@ -87,11 +97,10 @@ elseif($stmt) {
             "sending_loc" => $sending_loc,
             "delivery_loc" => $delivery_loc,
             "service_price" => $service_price,
-            "guardian_phone" => $guardian_phone,
             "delivery_type" => $delivery_type,
             "delivery_price" => $delivery_price,
             "status" => $status,
-            "note" => $note,
+            "comment" => $note,
             "created_at" => $created_at,
             "updated_at" => $updated_at,
 
@@ -103,33 +112,48 @@ elseif($stmt) {
     //   return;
     if (count($packages_arr['records']) == 0) {
         // set response code - 200 OK
-        http_response_code(404);
+        // http_response_code(404);
 
-        if($package_id != null){
-        // show packages data in json format
-        echo json_encode(array("message" => "No package found with this ID."));
-        }
-        elseif($tracking_no != null){
-        // show packages data in json format
-        echo json_encode(array("message" => "No package found with this tracking Number."));
+        if ($package_id != null) {
+            // show packages data in json format
+            // echo json_encode(array("message" => "No package found with this ID."));
+            $error = 'No package found with this ID.';
+            header('Location: ../../tracking.php?error=' . $error);
+            return false;
+        } elseif ($tracking_no != null) {
+            // // show packages data in json format
+            // echo json_encode(array("message" => "No package found with this tracking Number."));
+            $_SESSION['packages_arr'] = ["ok"];
+
+            $error = 'No package found with this tracking Number.';
+            header('Location: ../../tracking.php?error=' . $error);
+            return false;
         }
 
-        return;
+        // return;
     }
 
     // set response code - 200 OK
-    http_response_code(200);
+    // http_response_code(200);
 
-    // show packages data in json format
-    echo json_encode($packages_arr);
+    // // show packages data in json format
+    // echo json_encode($packages_arr);
+//    session_start();
+    $_SESSION['packages_arr'] = $packages_arr;
+    header('Location: ../../user-view.php');
+    return false;
+    
 } else {
     // no packages found will be here
 
     // set response code - 404 Not found
-    http_response_code(404);
+    // http_response_code(404);
 
-    // tell the package no products found
-    echo json_encode(
-        array("message" => "Something went wrong. Not able to fetch package. Try again.")
-    );
+    // // tell the package no products found
+    // echo json_encode(
+    //     array("message" => "Something went wrong. Not able to fetch package. Try again.")
+    // );
+    $error = 'No package found with this tracking Number.';
+    header('Location: ../../tracking.php?error=' . $error);
+    return false;
 }
