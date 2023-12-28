@@ -71,3 +71,19 @@
 #create-button {
   margin-top: 20px;
 }
+
+#editBtn,
+#saveBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#editBtn:hover,
+#saveBtn:hover {
+  background-color: #45a049;
+}

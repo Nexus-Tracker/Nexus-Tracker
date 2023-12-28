@@ -149,14 +149,23 @@
   <span>Price</span>
   <input id="" type="number" placeholder="Price" readonly>
   <span>Status</span>
-  <input id="" type="test" placeholder="Status" readonly>
+<select >
+  <option value="0">Package Received </option>
+  <option value="1">Package Dispatched</option>
+  <option value="2">Package Ontransit</option>
+  <option value="3">Package Arrived</option>
+  <option value="4">Package Delivered</option>
+  <option value="5">Package Complete</option>
 
-
-
-
-
+</select>
+<button id="editBtn">Edit</button>
+    <button style="display: none;" id="saveBtn" type="submit">Save</button>
 
   </form>
+  <script>
+    const editBtn = document.ge
+  </script>
+
   <footer class="footer" role="contentinfo">
     <div class="footer-top">
     <div class="container">
