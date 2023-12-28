@@ -100,7 +100,7 @@ if (is_string($stmt)) {
             "delivery_type" => $delivery_type,
             "delivery_price" => $delivery_price,
             "status" => $status,
-            "comment" => $note,
+            "comment" => $comment,
             "created_at" => $created_at,
             "updated_at" => $updated_at,
 
@@ -123,7 +123,6 @@ if (is_string($stmt)) {
         } elseif ($tracking_no != null) {
             // // show packages data in json format
             // echo json_encode(array("message" => "No package found with this tracking Number."));
-            $_SESSION['packages_arr'] = ["ok"];
 
             $error = 'No package found with this tracking Number.';
             header('Location: ../../tracking.php?error=' . $error);
@@ -138,7 +137,7 @@ if (is_string($stmt)) {
 
     // // show packages data in json format
     // echo json_encode($packages_arr);
-//    session_start();
+   session_start();
     $_SESSION['packages_arr'] = $packages_arr;
     header('Location: ../../user-view.php');
     return false;

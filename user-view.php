@@ -129,7 +129,7 @@ var_dump($_SESSION['packages_arr']);
     <a href="index.php" class="backbtn">Back</a>
   <h1 class="uh1">Shipment Information</h1>
 
-  <form id="shipment" class="shipment-info">
+  <form id="shipment" class="shipment-info" >
   <div>Package Id</div>
   <input id="" type="number" placeholder="Package id" value="<?php echo $_SESSION['packages_arr']['records'][0]['package_id']; ?>" readonly>
   <span>Tracking Number</span>
@@ -218,7 +218,7 @@ if($_SESSION['packages_arr']['records'][0]['delivery_type'] == 0){
     
     <ul id="menu-top-menu-1" class="menu">
     <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-467">
-    <a href="tracking.html">Track Shipment</a>
+    <a href="tracking.php">Track Shipment</a>
     
     </li>
     <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24"><a href="contact.html">Contact Us</a></li>
