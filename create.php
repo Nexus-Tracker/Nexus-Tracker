@@ -145,6 +145,13 @@
   <input id="" type="test" name="sending-location" placeholder="Sending Location">
   <span>Price</span>
   <input id="" type="number" name="price" placeholder="Price">
+  <span>Delivery Type</span>
+  <select>
+    <option value="office-pickup">Office Pickup</option>
+    <option value="home-delivery">Home Delivery</option>
+
+  </select>
+
   <span>Status</span>
   <input id="" type="test" name="status" placeholder="Status">
 

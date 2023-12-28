@@ -197,6 +197,13 @@ if($_SESSION['packages_arr']['records'][0]['delivery_type'] == 0){
 
 
   </form>
+
+  <iframe id='mapcanvas' src='https://maps.google.com/maps?q=United States,United State of American &z=3&ie=UTF8&iwloc=&output=embed' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' style="border:none;" width='100%' height='300' >
+
+<div style='overflow:hidden;'><div id='gmap_canvas' style='height:100%;width:700px;'></div></div>
+
+</iframe>
+
   <footer class="footer" role="contentinfo">
     <div class="footer-top">
     <div class="container">

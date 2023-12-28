@@ -162,7 +162,7 @@
     <div class="container">
     <div class="row">
     <div class="col-xs-12  col-md-4"><div class="widget  widget_black_studio_tinymce"><div class="textwidget"><p><img class=" size-full wp-image-22 alignnone" src="images/logo_footer.png" alt="logo-footer" width="217" height="50"></p>
-    <p>Security, convenience, and access – these are the words that define Nexus Express        Storage and that drive our growth and success. Thanks to our commitment and dedication to customer satisfaction, Nexus Express        has become a leader in self-storage. Our customers-first attitude has allowed us to expand to 53 locations.</p>
+    <p>Security, convenience, and access – these are the words that define Fastrack Express        Storage and that drive our growth and success. Thanks to our commitment and dedication to customer satisfaction, Nexus Express        has become a leader in self-storage. Our customers-first attitude has allowed us to expand to 53 locations.</p>
     <p><a class="icon-container  icon-container--square" href="https://www.facebook.com/" target="_blank"><span class="fa fa-facebook"></span></a>&nbsp;<a class="icon-container  icon-container--square" href="https://twitter.com/" target="_blank"><span class="fa fa-twitter"></span></a> <a class="icon-container  icon-container--square" href="http://themeforest.net/user/" target="_blank"><span class="fa fa-wordpress"></span></a>&nbsp;<a class="icon-container  icon-container--square" href="https://www.youtube.com/user/" target="_blank"><span class="fa fa-youtube-play"></span></a></p>
     </div></div></div>
     
@@ -224,9 +224,9 @@
     <div class="footer-bottom">
     <div class="container">
     <div class="footer-bottom__left">
-    <a href="#"> Secure Nexus Express       </a> A delivery service you can depend on. </div>
+    <a href="#"> FastrackExpress       </a> A delivery service you can depend on. </div>
     <div class="footer-bottom__right">
-    Copyright © 2009–2023 Secure Nexus Express       . All rights reserved. </div>
+    Copyright © 2009–2023 FastrackExpress       . All rights reserved. </div>
     </div>
     </div>
     </footer>
