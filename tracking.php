@@ -7,18 +7,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title> Fastrack Express    </title>
+    <title>Secure Nexus Express    </title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="tracking.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel=”stylesheet” href=”https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css” integrity=”sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh” crossorigin=”anonymous”>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="trac.css">
     <link rel='dns-prefetch' href='//fonts.googleapis.com'>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
+    <link rel="stylesheet" href="tracking.css">
   
     <link rel='dns-prefetch' href='//fonts.googleapis.com'>
 
@@ -678,7 +678,18 @@ body.custom-background { background-color: #578fbf; background-image: url("../wp
 
 						<p>
 
-<form action="./server/api/getpackage.php" method="post" class="wpcf7-form init" >
+<div class="notmes" style="background-color: rgb(236, 59, 59);color:white;padding:2px 5px">
+<?php
+
+if(isset($_GET['error'])){
+  echo $_GET['error'];
+}
+?>
+
+</div>
+
+
+<form action="./server/api/getpackage.php" method="get" class="wpcf7-form init" >
 
 							<div class="row">
 <div class="col-xs-12  col-md-8">
@@ -722,7 +733,7 @@ body.custom-background { background-color: #578fbf; background-image: url("../wp
 				<div class="footer-bottom__left">
 					All Rights Reserved				</div>
 				<div class="footer-bottom__right">
-					Copyright &copy; 2023  Fastrack Express       . All rights reserved.				</div>
+					Copyright &copy; 2023 Secure Nexus Express       . All rights reserved.				</div>
 			</div>
 		</div>
 	</footer>

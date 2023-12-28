@@ -1,3 +1,9 @@
+
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,9 +19,12 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="trac.css">
     <link rel="stylesheet" href="create.css">
+    <link rel="stylesheet" href="view.css">
+
     <link rel='dns-prefetch' href='//fonts.googleapis.com'>
+
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <title>Create Page</title>
+    <title>View Page</title>
     <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script> -->
   
     <style type="text/css">
@@ -104,58 +113,90 @@
             <!-- Top Menu -->
         <nav class="top__menu" role="navigation" aria-label="Top Menu">
           <ul id="menu-top-menu" class="top-navigation  js-dropdown" role="menubar"><li id="menu-item-609" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-609"><a href="about.html">About Us</a></li>
-    <li id="menu-item-608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-608"><a href="tracking.html">Tracking</a></li>
+    <li id="menu-item-608" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-608"><a href="tracking.php">Tracking</a></li>
     <li id="menu-item-610" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-610"><a href="contact.html">Contact Us</a></li>
     <li id="menu-item-610" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-610"><div id="google_translate_element"  class="hideGoogle" style="text-align: center;"></div></li>
     </ul>				
     </nav>
     </div>
     </div>
-    <a href="admin.html" class="backbtn">Back</a>
+
+    <?php
+var_dump($_SESSION['packages_arr']);
+
+?>
+
+    <a href="index.php" class="backbtn">Back</a>
   <h1 class="uh1">Shipment Information</h1>
 
-  <form id="shipment" class="shipment-info" method="post" action="./server/createpackage.php">
-  <span>Package Id</span>
-  <input id="" type="number" name="package-id" placeholder="Package id">
+  <form id="shipment" class="shipment-info">
+  <div>Package Id</div>
+  <input id="" type="number" placeholder="Package id" value="<?php echo $_SESSION['packages_arr']['records'][0]['package_id']; ?>" readonly>
   <span>Tracking Number</span>
-  <input id="" type="number"  name="tracking-no" placeholder="Tracking Number">
+  <input id="" type="text" placeholder="Tracking Number" value="<?php echo $_SESSION['packages_arr']['records'][0]['tracking_no']; ?>" readonly>
   <span>Description</span>
-  <input id="" type="test"  name="description" placeholder="Description">
+  <input id="" type="text" placeholder="Description" value="<?php echo $_SESSION['packages_arr']['records'][0]['description']; ?>" readonly>
     <h1>Sender's Information</h1>
   <span>Sender's Name</span>
-  <input id="" type="test" name="sender-name" placeholder="Sender's Name">
+  <input id="" type="text" placeholder="Sender's Name" value="<?php echo $_SESSION['packages_arr']['records'][0]['sender_name']; ?>" readonly>
   <span>Sender's Address</span>
-  <input id="" type="test" name="sender-address" placeholder="Sender's Address">
+  <input id="" type="text" placeholder="Sender's Address" value="<?php echo $_SESSION['packages_arr']['records'][0]['sender_address']; ?>" readonly>
   <span>Sender's Phone</span>
-  <input id="" type="tel"  name="sender-phone" placeholder="Sender's Phone">
+  <input id="" type="text" placeholder="Sender's Phone" value="<?php echo $_SESSION['packages_arr']['records'][0]['sender_phone']; ?>" readonly>
   <span>Sender's Email</span>
-  <input id="" type="email" name="sender-email" placeholder="Sender's Email">
+  <input id="" type="email" placeholder="Sender's Email" value="<?php echo $_SESSION['packages_arr']['records'][0]['sender_email']; ?>" readonly>
   <h1>Receiver's Information</h1>
   <span>Receiver's Name</span>
-  <input id="" type="test"  name="receiver-name" placeholder="Receiver's Name">
+  <input id="" type="text" placeholder="Receiver's Name" value="<?php echo $_SESSION['packages_arr']['records'][0]['receiver_name']; ?>" readonly>
   <span>Receiver's Address</span>
-  <input id="" type="test" name="receiver-address" placeholder="Receiver's Address">
+  <input id="" type="text" placeholder="Receiver's Address" value="<?php echo $_SESSION['packages_arr']['records'][0]['receiver_address']; ?>" readonly>
   <span>Receiver's Phone</span>
-  <input id="" type="tel" name="receiver-phone" placeholder="Receiver's Phone">
+  <input id="" type="text" placeholder="Receiver's Phone" value="<?php echo $_SESSION['packages_arr']['records'][0]['receiver_phone']; ?>" readonly>
   <span>Receiver's Email</span>
-  <input id="" type="email" name="receiver-email" placeholder="Receiver's Email">
+  <input id="" type="email" placeholder="Receiver's Email" value="<?php echo $_SESSION['packages_arr']['records'][0]['receiver_email']; ?>" readonly>
 
   <h1>Other Information</h1>
   <span>Sending Location</span>
-  <input id="" type="test" name="sending-location" placeholder="Sending Location">
-  <span>Price</span>
-  <input id="" type="number" name="price" placeholder="Price">
+  <input id="" type="text" placeholder="Sending Location" value="<?php echo $_SESSION['packages_arr']['records'][0]['sending_loc']; ?>" readonly>
+  <span>Delivery Location</span>
+  <input id="" type="text" placeholder="Sending Location" value="<?php echo $_SESSION['packages_arr']['records'][0]['delivery_loc']; ?>" readonly>
+
+  <span>Service Price</span>
+  <input id="" type="number" placeholder="Service Price" value="<?php $_SESSION['packages_arr']['records'][0]['service_price']; ?>" readonly>
+  <span>Delivery Type</span>
+  <input id="" type="number" placeholder="Delivery Type" value="<?php 
+if($_SESSION['packages_arr']['records'][0]['delivery_type'] == 0){
+  echo "Office Pickup";
+}else{
+  echo "Home Delivery";
+}  ?>" readonly>
+  <span>Delivery Price</span>
+  <input id="" type="number" placeholder="Delivery Price" value="<?php echo $_SESSION['packages_arr']['records'][0]['delivery_price']; ?>" readonly>
+
   <span>Status</span>
-  <input id="" type="test" name="status" placeholder="Status">
-
-<button id="createBtn" type="submit">Create</button>
-
-
-
+  <input id="" type="text" placeholder="Status" value="<?php 
+  if($_SESSION['packages_arr']['records'][0]['status'] == 0){
+  echo  "Package Recieved";
+  }
+  elseif($_SESSION['packages_arr']['records'][0]['status'] == 1){
+    echo  "Package Sent";
+    }
+    elseif($_SESSION['packages_arr']['records'][0]['status'] == 3){
+      echo  "Package Ontransit";
+      }
+      elseif($_SESSION['packages_arr']['records'][0]['status'] == 4){
+        echo  "Package Arrived";
+        }
+        elseif($_SESSION['packages_arr']['records'][0]['status'] == 5){
+          echo  "Package Delivered";
+          }
+          elseif($_SESSION['packages_arr']['records'][0]['status'] == 6){
+            echo  "Completed";
+            }
+  ?>" readonly>
 
 
   </form>
-  <div id="displayMessage"></div>
   <footer class="footer" role="contentinfo">
     <div class="footer-top">
     <div class="container">
@@ -231,6 +272,6 @@
     </footer>
     
     </div><!-- end of .boxed-container -->
-    
+    <script src="view.js"></script>
 </body>
 </html>
