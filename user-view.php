@@ -2,6 +2,11 @@
 <?php
 session_start();
 
+if(!isset($_SESSION['packages_arr'])){
+  $error = "Please a valid tracking number and press the TRACK button";
+  header('location: ./tracking.php?error='.$error);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -11,9 +16,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel=”stylesheet” href=”https://stackpath.bootstrapcdn.com/
-    bootstrap/4.4.1/css/bootstrap.min.css” integrity=”sha384-Vkoo8x4CGsO3+Hhxv8T/
-    Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh” crossorigin=”anonymous”>
+    <link rel=”stylesheet” href=”https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css” integrity=”sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh” crossorigin=”anonymous”>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <link rel="stylesheet" href="style.css">
@@ -121,10 +124,6 @@ session_start();
     </div>
     </div>
 
-    <?php
-var_dump($_SESSION['packages_arr']);
-
-?>
 
     <a href="index.php" class="backbtn">Back</a>
   <h1 class="uh1">Shipment Information</h1>
@@ -150,25 +149,30 @@ var_dump($_SESSION['packages_arr']);
   <input id="" type="text" placeholder="Receiver's Name" value="<?php echo $_SESSION['packages_arr']['records'][0]['receiver_name']; ?>" readonly>
   <span>Receiver's Address</span>
   <input id="" type="text" placeholder="Receiver's Address" value="<?php echo $_SESSION['packages_arr']['records'][0]['receiver_address']; ?>" readonly>
+  
   <span>Receiver's Phone</span>
   <input id="" type="text" placeholder="Receiver's Phone" value="<?php echo $_SESSION['packages_arr']['records'][0]['receiver_phone']; ?>" readonly>
+  
   <span>Receiver's Email</span>
   <input id="" type="email" placeholder="Receiver's Email" value="<?php echo $_SESSION['packages_arr']['records'][0]['receiver_email']; ?>" readonly>
 
   <h1>Other Information</h1>
+
   <span>Sending Location</span>
   <input id="" type="text" placeholder="Sending Location" value="<?php echo $_SESSION['packages_arr']['records'][0]['sending_loc']; ?>" readonly>
+  
   <span>Delivery Location</span>
   <input id="" type="text" placeholder="Sending Location" value="<?php echo $_SESSION['packages_arr']['records'][0]['delivery_loc']; ?>" readonly>
 
   <span>Service Price</span>
   <input id="" type="number" placeholder="Service Price" value="<?php $_SESSION['packages_arr']['records'][0]['service_price']; ?>" readonly>
   <span>Delivery Type</span>
-  <input id="" type="number" placeholder="Delivery Type" value="<?php 
-if($_SESSION['packages_arr']['records'][0]['delivery_type'] == 0){
-  echo "Office Pickup";
-}else{
-  echo "Home Delivery";
+
+  <input id="" type="text" placeholder="Delivery Type" value="<?php 
+if($_SESSION['packages_arr']['records'][0]['delivery_type'] == 1){
+  echo 'Office Pickup';
+}elseif($_SESSION['packages_arr']['records'][0]['delivery_type'] == 2){
+  echo 'Home Delivery';
 }  ?>" readonly>
   <span>Delivery Price</span>
   <input id="" type="number" placeholder="Delivery Price" value="<?php echo $_SESSION['packages_arr']['records'][0]['delivery_price']; ?>" readonly>

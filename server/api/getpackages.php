@@ -82,22 +82,14 @@ if (is_string($stmt)) {
         // set response code - 200 OK
         // http_response_code(404);
 
-        if ($package_id != null) {
             // show packages data in json format
             // echo json_encode(array("message" => "No package found with this ID."));
-            $error = 'No package found with this ID.';
+            $error = 'No packages found.';
             header('Location: ../../tracking.php?error=' . $error);
             return false;
-        } elseif ($tracking_no != null) {
             // // show packages data in json format
             // echo json_encode(array("message" => "No package found with this tracking Number."));
 
-            $error = 'No package found with this tracking Number.';
-            header('Location: ../../tracking.php?error=' . $error);
-            return false;
-        }
-
-        // return;
     }
 
     // set response code - 200 OK
@@ -107,7 +99,7 @@ if (is_string($stmt)) {
     // echo json_encode($packages_arr);
 //    session_start();
     $_SESSION['packages_arr'] = $packages_arr;
-    header('Location: ../../user-view.php');
+    header('Location: ../../admin.php');
     return false;
     
 } else {

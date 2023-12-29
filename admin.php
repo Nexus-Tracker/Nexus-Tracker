@@ -336,6 +336,9 @@
     <a href="create.php" class="create-atag">Add Shipment</a>
   </div>
   <h1>Shipment Information</h1>
+  <!-- Notification -->
+  <?php include('./includes/notification.php') ?>
+
   <table>
     <thead>
       <tr>

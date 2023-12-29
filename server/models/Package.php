@@ -28,7 +28,7 @@ class Package
     public $delivery_type;
     public $delivery_price;
     public $status;
-    public $comment;
+    public $comment = null;
     public $created_at;
     public $updated_at;
 
@@ -102,34 +102,37 @@ class Package
     {
         // Generate and set properties
         $this->tracking_no = "FASTRACK" . date("YmdHis") . uniqid();
-
-
+        
+        // var_dump($this->tracking_no);
+        // return;
 
         // query to insert record
-        $query = "INSERT INTO " . $this->table_name . " (tracking_no, description, sender_name, sender_email, sender_phone, sender_address, receiver_name, receiver_email, receiver_phone, receiver_address, sending_loc, delivery_loc, service_tprice, delivery_type, delivery_price, status, comment  ) VALUES (:tracking_no, :description, :sender_name, :sender_email, :sender_phone, :sender_address, :receiver_name, :receiver_email, :receiver_phone, :receiver_address, :sending_loc, :delivery_loc, :service_tprice, :delivery_type, :delivery_price, :status, :comment ) ";
+        $query = "INSERT INTO " . $this->table_name . " (tracking_no, description, sender_name, sender_email, sender_phone, sender_address, receiver_name, receiver_email, receiver_phone, receiver_address, sending_loc, delivery_loc, service_price, delivery_type, delivery_price, comment  ) VALUES (:tracking_no, :description, :sender_name, :sender_email, :sender_phone, :sender_address, :receiver_name, :receiver_email, :receiver_phone, :receiver_address, :sending_loc, :delivery_loc, :service_price, :delivery_type, :delivery_price, :comment ) ";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
-        $admission_no = "MIS/";
+        // $admission_no = "MIS/";
 
         // bind values
-        $stmt->bindParam(":tracking_no", $admission_no);
+        $stmt->bindParam(":tracking_no", $this->tracking_no);
         $stmt->bindParam(":description", $this->description);
         $stmt->bindParam(":sender_name", $this->sender_name);
         $stmt->bindParam(":sender_email", $this->sender_email);
+
         $stmt->bindParam(":sender_phone", $this->sender_phone);
         $stmt->bindParam(":sender_address", $this->sender_address);
         $stmt->bindParam(":receiver_name", $this->receiver_name);
         $stmt->bindParam(":receiver_email", $this->receiver_email);
+
         $stmt->bindParam(":receiver_phone", $this->receiver_phone);
         $stmt->bindParam(":receiver_address", $this->receiver_address);
         $stmt->bindParam(":sending_loc", $this->sending_loc);
         $stmt->bindParam(":delivery_loc", $this->delivery_loc);
+
         $stmt->bindParam(":service_price", $this->service_price);
         $stmt->bindParam(":delivery_type", $this->delivery_type);
         $stmt->bindParam(":delivery_price", $this->delivery_price);
-        $stmt->bindParam(":status", $this->status);
         $stmt->bindParam(":comment", $this->comment);
 
 
@@ -138,11 +141,11 @@ class Package
             // execute query
             if ($stmt->execute()) {
 
-                $setId = $this->setLastpackageId($this->conn->lastInsertId());
+                // $setId = $this->setLastpackageId($this->conn->lastInsertId());
 
-                if (is_string($setId)) {
-                    return $setId;
-                } elseif ($setId) {
+                if (is_string($stmt)) {
+                    return $stmt;
+                } elseif ($stmt) {
                     return true;
                 } else {
                     return false;
@@ -150,7 +153,7 @@ class Package
             }
         } catch (Exception $e) {
 
-            return $e->getMessage();
+            return "SQL Exec error" . $e->getMessage();
         }
     }
 
@@ -412,7 +415,7 @@ class Package
     // read a single user
     function setLastpackageId($lastId)
     {
-        $offsetId = $lastId + 13;
+        $offsetId = $lastId + 9;
         // update query
         $query = "UPDATE " . $this->table_name . " SET
         tracking_no = :tracking_no WHERE package_id = :package_id";

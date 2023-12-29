@@ -678,15 +678,7 @@ body.custom-background { background-color: #578fbf; background-image: url("../wp
 
 						<p>
 
-<div class="notmes" style="background-color: rgb(236, 59, 59);color:white;padding:2px 5px">
-<?php
-
-if(isset($_GET['error'])){
-  echo $_GET['error'];
-}
-?>
-
-</div>
+<?php include('./includes/notification.php') ?>
 
 
 <form action="./server/api/getpackage.php" method="get" class="wpcf7-form init" >
